@@ -31,6 +31,7 @@ export default {
     disabledAttribute: Object,
     themeStyles: Object,
     attributes: Array,
+    resetDragValue: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -76,6 +77,11 @@ export default {
     dragValue(val) {
       this.$emit('drag', rangeNormalizer(val));
     },
+    resetDragValue(val){
+      if (val) {
+        this.dragValue = null
+      }
+    }
   },
   created() {
     // Clear drag on escape keydown
